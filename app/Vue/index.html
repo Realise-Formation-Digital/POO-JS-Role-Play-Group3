@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../Model/player.js"></script>
+</head>
+<body>
+    <p>hello world pret a commencer le RPG</p>
+    <script>
+
+
+        //Initialisation des objets pour le jeu
+        var player = new Player(23);
+        //player._pv = 12;
+        //player.getPv() = 23;
+        //player.setPv(45);
+        
+
+        
+        alert("pv avant modif : " + player.getPv());
+        player.setPv(45);
+        alert("pv apres modif : " + player.getPv());
+        
+        
+    </script>
+<!--  -->
+</body>
+</html>
