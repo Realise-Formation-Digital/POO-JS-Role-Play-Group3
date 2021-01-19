@@ -1,6 +1,8 @@
 class Weapon {
 //#region Attributs 
-    
+    //Id de l'arme
+    _id = 0;
+
     //nom de l'arme
     _name = "";
 
@@ -15,6 +17,10 @@ class Weapon {
 //#endregion
 
 //#region Get
+    getId(){
+        return this._id;
+    }
+
     getName(){
         return this._name;
     }
@@ -53,13 +59,16 @@ class Weapon {
 //#region Methodes
 
     //Constructeur
-    constructor(name, strenght, endurance, price){
+    constructor(id, name, strenght, endurance){
+        this._id = id;
         this._name = name;
         this._strenght = strenght;
         this._endurance = endurance;
-        this._price = price;
+        this._price =  Math.floor(Math.random() * 10) + 1; //revoie un int entre 1 et 10
     }
     
+
+
 
 //#endregion
 }

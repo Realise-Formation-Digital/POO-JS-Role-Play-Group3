@@ -20,7 +20,7 @@ class Player {
     _weapon = null;
     
     _inventory = [];
-
+    
     //Argent du joueur
     _gold = 0;
 
@@ -101,7 +101,7 @@ class Player {
     }
 
     //Combattre
-    fight(){
+    fight(objMonster){
         
     }
 
@@ -130,6 +130,11 @@ class Player {
      
     }
 
+    unquipWeapon(objWeapon){
+        //Ajoute l'arme dans l'inventaire du joueur
+        this._inventory.push(objWeapon);
+    }
+
     //Enlever une arme
     removeWeapon(objWeapon){
         //Eleve les point de force de l'arme au joueur
@@ -143,15 +148,40 @@ class Player {
     addWeaponInventory(objWeapon) {
         this._inventory.push(objWeapon);
     }
+
+    selectId(){
+        //dois recuperer l'identifiant de l'arme selection par l'utilisateur et l'associer au index du tableau
+    }
+
+    deleteWeaponInventory(objWeapon){
+        // retourne l'id de l'arme
+        console.log('armeASupprimer', objWeapon);
+        console.log('arme', this._inventory);
+        this._inventory.map((value, index) => {
+            if (value === objWeapon) {
+                this._inventory.splice(index, 1);
+            }
+        });
+        let id = objWeapon.getId();
+        // this._inventory.splice(index,1); //splice(index, nbElement) enleve un item du tableaux
+        
+    }
     
     //Acheter une arme
-    buyWeapon() {
+    buyWeapon(objWeapon) {
 
     }
 
-    //Vendre une arme desequipe
-    sellWeapon(){
+    //Vendre une arme
+    sellWeapon(objWeapon) {
+        //Ajoute le prix de l'arme a la bourse du joueur
+        let priceWeapon = Math.ceil(objWeapon.getPrice() / 2); //Math.ceil arrondis vers le hault pour qu'il n'y ai pas de reste apres la division
+        this._gold += priceWeapon;
 
+        //suprime l'arme de l'inventaire
+        this.deleteWeaponInventory(objWeapon);
+        //this._inventory 
+   
     }
 //#endregion
 
