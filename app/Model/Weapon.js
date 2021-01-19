@@ -1,5 +1,9 @@
 class Weapon {
 //#region Attributs 
+    
+    //nom de l'arme
+    _name = "";
+
     //Point de force de l'arme
     _strenght = 0;
 
@@ -11,6 +15,10 @@ class Weapon {
 //#endregion
 
 //#region Get
+    getName(){
+        return this._name;
+    }
+
     getStrenght(){
         return this._strenght;
     }
@@ -25,6 +33,9 @@ class Weapon {
 //#endregion
 
 //#region Set
+    setName(name){
+        this._name = name;
+    }
     setStrenght(strenght){
         this._strenght = strenght;
     }
@@ -42,7 +53,8 @@ class Weapon {
 //#region Methodes
 
     //Constructeur
-    constructor(strenght, endurance, price){
+    constructor(name, strenght, endurance, price){
+        this._name = name;
         this._strenght = strenght;
         this._endurance = endurance;
         this._price = price;
@@ -51,3 +63,5 @@ class Weapon {
 
 //#endregion
 }
+
+export default Weapon

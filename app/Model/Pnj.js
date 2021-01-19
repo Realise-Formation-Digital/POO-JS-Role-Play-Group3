@@ -49,3 +49,5 @@ class Pnj {
 
 //#endregion
 }
+
+export default Pnj

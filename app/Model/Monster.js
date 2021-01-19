@@ -44,6 +44,15 @@ class Monster {
 
     }
 
+    //Mourir
+    Die(){
+        if(this._pv === 0){
+            alert("le monstre meurt")            
+        }
+    }
+
 //#endregion
 
 }
+
+export default Monster

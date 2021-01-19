@@ -1,3 +1,5 @@
+//import Game from "./Game";
+
 class Player {
     
 //#region Attributs
@@ -15,7 +17,9 @@ class Player {
     _endurance = 0;
 
     //arme que porte le joueur
-    _weapon = {};
+    _weapon = null;
+    
+    _inventory = [];
 
     //Argent du joueur
     _gold = 0;
@@ -48,10 +52,13 @@ class Player {
         return this._weapon;
     }
 
+    getInventory(){
+        return this._inventory;
+    }
+
     getGold(){
         return this._gold;
     }
-
 
 //#endregion
 
@@ -85,49 +92,69 @@ class Player {
 //#region Methodes
 
     //Constructeur
-    constructor(pv, xp, strenght, endurance, weapon, gold){
+    constructor(pv, xp, strenght, endurance, gold) {
         this._pv = pv;
         this._xp = xp;
         this._strenght = strenght;
-        this_endurance = endurance;
-        this._weapon = weapon;
+        this._endurance = endurance;
         this._gold = gold;
     }
 
     //Combattre
-    Fight(){
+    fight(){
         
     }
 
     //Fuir
-    Escape(){
-
+    escape(){
+        this._xp - 1;
     }
 
     //Mourir
-    Die(){
-
+    die(){
+        if(this._pv === 0){
+            alert("Vous êtes mort gros nazzzz !!!! \n" + "Pv : " + this._pv);
+        }
     }
 
     //Equiper une arme
-    EquipWeapon(){
+    equipWeapon(objWeapon){
+        //Ajoute l'arme au joueur
+        this._weapon = objWeapon;
+        
+        //Ajoute les points de force de l'arme au joueur
+        this._strenght += objWeapon.getStrenght(); 
 
+        //Ajoute les point d'endurance de l'arme au joueur
+        this._endurance += objWeapon.getEndurance();
+     
     }
 
     //Enlever une arme
-    RemoveWeapon(){
+    removeWeapon(objWeapon){
+        //Eleve les point de force de l'arme au joueur
+        this._strenght - objWeapon.getStrenght;
 
+        //Eleve les point d'endurance de l'arme au joueur
+        this._endurance - objWeapon.getEndurance;
+    }
+
+    //Ajoute une arme dans son inventair
+    addWeaponInventory(objWeapon) {
+        this._inventory.push(objWeapon);
     }
     
     //Acheter une arme
-    BuyWeapon(){
-
+    buyWeapon(){
+        
     }
 
     //Vendre une arme desequipe
-    SellWeapon(){
+    sellWeapon(){
 
     }
 //#endregion
 
 }
+
+export default Player
