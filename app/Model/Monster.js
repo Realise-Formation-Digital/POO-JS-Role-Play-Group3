@@ -40,12 +40,12 @@ class Monster {
     }
 
     //Combattre
-    Fight(){
+    fight(){
 
     }
 
     //Mourir
-    Die(){
+    die(){
         if(this._pv === 0){
             alert("le monstre meurt")            
         }

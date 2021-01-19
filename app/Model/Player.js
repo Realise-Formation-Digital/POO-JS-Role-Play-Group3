@@ -145,8 +145,8 @@ class Player {
     }
     
     //Acheter une arme
-    buyWeapon(){
-        
+    buyWeapon() {
+
     }
 
     //Vendre une arme desequipe
