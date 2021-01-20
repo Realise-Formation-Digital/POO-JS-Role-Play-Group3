@@ -22,49 +22,46 @@ class Game {
         
         //Initialisation des objets pour le jeu
 
-        //Weapon(name, strenght, endurance, price)
-        let weapon = new Weapon("hache aiguisé",10, 5, 4);
-        let weapon2 = new Weapon("épée rouillé",1,1,1);
-        let weapon3 = new Weapon("dague en bois",1,1,1);
+        //Weapon(name, strenght, endurance)
+        let weapon = new Weapon("hache aiguisé",10, 5);
+        let weapon2 = new Weapon("épée rouillé",1,1);
+        let weapon3 = new Weapon("dague en bois",1,1);
 
         //Player(pv, xp, strenght, endurance, gold)
         let player = new Player(10, 0, 10, 1, 10);
+        
+        //Creation du joueur
         player.addWeaponInventory(weapon);
         player.addWeaponInventory(weapon2);
         player.addWeaponInventory(weapon3);
 
+        //Creation du monstre
         let monster = new Monster("Philipe");
         monster.addWeapon(weapon3);
 
+        //Creation du pnj
         let pnj = new Pnj("Joe le pnj");
 
-        console.log("Pnj name: ", pnj.getName());
 
-        console.log("Pnj xp: ", pnj.getXp());
-        console.log("Pnj force: ", pnj.getStrenght());
-        console.log("Pnj endurance: ", pnj.getEndurance());
+        console.log("Joueur inventair", player.getInventory());
+        
+        console.log("Joueur vent l'arme");
+        player.sellWeapon(weapon2);
+        console.log("Joueur inventair apres achat", player.getInventory());
 
-        /*
-        console.log('Monstre nom : ', monster.getName());
-        console.log('Monstre or : ', monster.getGold());
-        
-        console.log('Joueur or : ', player.getGold());
-        
-        monster.setPv(0);
-        console.log('Monstre meurt, pv : ',monster.getPv());
-        //monster.die();
-        
-        player.pickUpGold(monster);
-        
-        console.log('Joueur or : ', player.getGold());
-        */
-        
-
-
-
+        console.log("Pnj achete arme ");
+        pnj.buyWeapon(weapon2);
+        console.log("Pnj inventaire apres vente", pnj.getInventory());
 
         
-
+        console.log("Pnj vend arme ");
+        pnj.sellWeapon(weapon2);
+        
+        console.log("Joueur achete arme");
+        player.buyWeapon(weapon2);
+        console.log("Joueur inventair apres achat", player.getInventory());
+        
+  
     }
 
     //Game Loop

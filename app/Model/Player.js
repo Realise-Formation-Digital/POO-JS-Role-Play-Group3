@@ -102,7 +102,7 @@ class Player {
 
     //Combattre
     fight(objMonster){
-        
+        //objMonster
     }
 
     //Fuir
@@ -159,7 +159,7 @@ class Player {
     }
 
     deleteWeaponInventory(objWeapon) {
-        //Compart l'objet arme avec celui present dans l'attribut '_Inventory'
+        //Map compart l'objet arme avec celui present dans le tableau '_Inventory' de la classe
         this._inventory.map((value, index) => {
             if (value === objWeapon) {
                 this._inventory.splice(index, 1); //splice(index, nbElement) enleve un item du tableaux
@@ -182,8 +182,9 @@ class Player {
     sellWeapon(objWeapon) {
         //Si l'arme est déséquipé
         if(objWeapon.getEquipped() === false){
+            //let priceWeapon = Math.ceil(objWeapon.getPrice() / 2); //Math.ceil arrondis vers le hault pour qu'il n'y ai pas de reste apres la division
             //Ajoute le prix de l'arme a la bourse du joueur
-            let priceWeapon = Math.ceil(objWeapon.getPrice() / 2); //Math.ceil arrondis vers le hault pour qu'il n'y ai pas de reste apres la division
+            let priceWeapon = objWeapon.getPrice() / 2;
             this._gold += priceWeapon;
     
             //suprime l'arme de l'inventaire

@@ -8,20 +8,20 @@ class Monster {
     _pv = 100;
     
     //Point experience
-    _xp = this.nbRandom(50, 0);
+    _xp = 0;
     
     //Point de force
-    _strenght = this.nbRandom(this._xp, 1);
+    _strenght = 0;
 
     //point d'endurance
     //_endurance = Math.ceil((Math.random() * this._xp) + 1);
-    _endurance = this.nbRandom(this._xp, 1);
+    _endurance = 0;
 
     //Arme que porte le monstre
     _weapon;
 
     //Argent du monstre
-    _gold = this.nbRandom(20, 0); //Math.ceil(objWeapon.getPrice() / 2)
+    _gold = 0; //Math.ceil(objWeapon.getPrice() / 2)
 
 //#endregion
 
@@ -79,6 +79,10 @@ class Monster {
     //Constructeur
     constructor(name) {
         this._name = name;
+        this._xp = this.nbRandom(50, 0);
+        this._strenght = this.nbRandom(this._xp, 1);
+        this._endurance = this.nbRandom(this._xp, 1);
+        this._gold = this.nbRandom(20, 0);
     }
 
     nbRandom(max, min){
