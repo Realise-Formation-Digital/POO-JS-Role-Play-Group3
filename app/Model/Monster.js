@@ -72,24 +72,12 @@ class Monster {
         this._strenght = endurance;
     }
 
-    /*
-    setWeapon(weapon){
-        //Ajoute l'arme au monstre
-        this._weapon = weapon;
-        //Ajoute la force de l'arme au monstre
-        this._strenght += weapon.getStrenght();
-        //Ajoute l'endurance de l'arme au monstre
-        this._endurance += weapon.getEndurance();
-        
-    }
-    */
-
 //#endregion
 
 //#region Methodes
 
     //Constructeur
-    constructor(name){
+    constructor(name) {
         this._name = name;
     }
 
@@ -122,7 +110,7 @@ class Monster {
         this._endurance += weapon.getEndurance();
     }
 
-    
+
 
 //#endregion
 

@@ -36,6 +36,15 @@ class Game {
         let monster = new Monster("Philipe");
         monster.addWeapon(weapon3);
 
+        let pnj = new Pnj("Joe le pnj");
+
+        console.log("Pnj name: ", pnj.getName());
+
+        console.log("Pnj xp: ", pnj.getXp());
+        console.log("Pnj force: ", pnj.getStrenght());
+        console.log("Pnj endurance: ", pnj.getEndurance());
+
+        /*
         console.log('Monstre nom : ', monster.getName());
         console.log('Monstre or : ', monster.getGold());
         
@@ -48,7 +57,7 @@ class Game {
         player.pickUpGold(monster);
         
         console.log('Joueur or : ', player.getGold());
-
+        */
         
 
 
