@@ -1,7 +1,5 @@
 class Weapon {
 //#region Attributs 
-    //Id de l'arme
-    _id = 0;
 
     //nom de l'arme
     _name = "";
@@ -14,6 +12,9 @@ class Weapon {
 
     //Prix de l'arme
     _price = 0;
+
+    //Arme équipé ou pas
+    _equipped = false;
 //#endregion
 
 //#region Get
@@ -36,6 +37,11 @@ class Weapon {
     getPrice(){
         return this._price;
     }
+
+    getEquipped(){
+        return this._equipped;
+    }
+
 //#endregion
 
 //#region Set
@@ -54,13 +60,16 @@ class Weapon {
         this._price = price;
     }
 
+    setEquipped(equipped){
+        this._equipped = equipped;
+    }
+
 //#endregion
 
 //#region Methodes
 
     //Constructeur
-    constructor(id, name, strenght, endurance){
-        this._id = id;
+    constructor(name, strenght, endurance){      
         this._name = name;
         this._strenght = strenght;
         this._endurance = endurance;

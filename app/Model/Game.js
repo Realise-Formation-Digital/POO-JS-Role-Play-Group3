@@ -23,36 +23,39 @@ class Game {
         //Initialisation des objets pour le jeu
 
         //Weapon(name, strenght, endurance, price)
-        let weapon = new Weapon(0,"hache aiguisé",10, 5, 4);
-        
-        let weapon2 = new Weapon(1,"épée rouillé",1,1,1);
-        let weapon3 = new Weapon(2,"dague en bois",1,1,1);
+        let weapon = new Weapon("hache aiguisé",10, 5, 4);
+        let weapon2 = new Weapon("épée rouillé",1,1,1);
+        let weapon3 = new Weapon("dague en bois",1,1,1);
 
         //Player(pv, xp, strenght, endurance, gold)
         let player = new Player(10, 0, 10, 1, 10);
-
         player.addWeaponInventory(weapon);
         player.addWeaponInventory(weapon2);
         player.addWeaponInventory(weapon3);
 
-        player.sellWeapon(weapon);
+        let monster = new Monster("Philipe");
+        monster.addWeapon(weapon3);
 
-        // player.sellWeapon(weapon2);
-        // player.sellWeapon(weapon3);
+        console.log('Monstre nom : ', monster.getName());
+        console.log('Monstre or : ', monster.getGold());
         
-        //console.log("inventair du joueur: "+player.getInventory());
+        console.log('Joueur or : ', player.getGold());
         
-        //console.log("Gold player : " + player.getGold());
-
-
-        /*
-        console.log("Arme du joueur avant d'équiper : "+player.getWeapon());
-
-        player.equipWeapon(weapon);
-        */
-
-        //console.log(player.getWeapon());
+        monster.setPv(0);
+        console.log('Monstre meurt, pv : ',monster.getPv());
+        //monster.die();
         
+        player.pickUpGold(monster);
+        
+        console.log('Joueur or : ', player.getGold());
+
+        
+
+
+
+
+        
+
     }
 
     //Game Loop

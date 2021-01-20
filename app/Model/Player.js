@@ -107,7 +107,7 @@ class Player {
 
     //Fuir
     escape(){
-        this._xp - 1;
+        this._xp -= 1;
     }
 
     //Mourir
@@ -119,29 +119,38 @@ class Player {
 
     //Equiper une arme
     equipWeapon(objWeapon){
-        //Ajoute l'arme au joueur
-        this._weapon = objWeapon;
-        
-        //Ajoute les points de force de l'arme au joueur
-        this._strenght += objWeapon.getStrenght(); 
+        if(objWeapon.getEquipped !== false){
+            //Ajoute l'arme a l'etat équipé
+            objWeapon.setEquipped(true);
+            
+            //Ajoute les points de force de l'arme au joueur
+            this._strenght += objWeapon.getStrenght(); 
 
-        //Ajoute les point d'endurance de l'arme au joueur
-        this._endurance += objWeapon.getEndurance();
-     
+            //Ajoute les point d'endurance de l'arme au joueur
+            this._endurance += objWeapon.getEndurance();
+        }else{
+            alert("L'arme est deja équipé par le joueur !!!");
+        }
     }
 
+    //Desequiper une arme
     unquipWeapon(objWeapon){
-        //Ajoute l'arme dans l'inventaire du joueur
-        this._inventory.push(objWeapon);
-    }
+        //Si l'arme n'est pas équipé par le joueur
+        if(objWeapon.getEquipped !== true){
+            //Modifie l'etat de l'arme sur déséquipé
+            objWeapon.setEquipped(false);
 
-    //Enlever une arme
-    removeWeapon(objWeapon){
-        //Eleve les point de force de l'arme au joueur
-        this._strenght - objWeapon.getStrenght;
+            //Ajoute l'arme dans l'inventaire du joueur
+            this.addWeaponInventory(objWeapon);
+    
+            //Eleve les point de force de l'arme au joueur
+            this._strenght -= objWeapon.getStrenght();
 
-        //Eleve les point d'endurance de l'arme au joueur
-        this._endurance - objWeapon.getEndurance;
+            //Eleve les point d'endurance de l'arme au joueur
+            this._endurance -= objWeapon.getEndurance();
+        }else{
+            alert("L'arme n'est pas équipé par le joueur !!!");
+        }
     }
 
     //Ajoute une arme dans son inventair
@@ -149,39 +158,42 @@ class Player {
         this._inventory.push(objWeapon);
     }
 
-    selectId(){
-        //dois recuperer l'identifiant de l'arme selection par l'utilisateur et l'associer au index du tableau
-    }
-
-    deleteWeaponInventory(objWeapon){
-        // retourne l'id de l'arme
-        console.log('armeASupprimer', objWeapon);
-        console.log('arme', this._inventory);
+    deleteWeaponInventory(objWeapon) {
+        //Compart l'objet arme avec celui present dans l'attribut '_Inventory'
         this._inventory.map((value, index) => {
             if (value === objWeapon) {
-                this._inventory.splice(index, 1);
+                this._inventory.splice(index, 1); //splice(index, nbElement) enleve un item du tableaux
             }
-        });
-        let id = objWeapon.getId();
-        // this._inventory.splice(index,1); //splice(index, nbElement) enleve un item du tableaux
-        
+        });  
     }
     
     //Acheter une arme
     buyWeapon(objWeapon) {
-
+       let priceWeapon = objWeapon.getPrice();
+       if(this._gold >= priceWeapon){
+            //Eleve le prix de l'arme au joueur
+            this._gold -= priceWeapon;
+            //Ajoute la nouvelle arme dans l'inventair du joueur
+            this.addWeaponInventory(objWeapon);
+       }
     }
 
     //Vendre une arme
     sellWeapon(objWeapon) {
-        //Ajoute le prix de l'arme a la bourse du joueur
-        let priceWeapon = Math.ceil(objWeapon.getPrice() / 2); //Math.ceil arrondis vers le hault pour qu'il n'y ai pas de reste apres la division
-        this._gold += priceWeapon;
+        //Si l'arme est déséquipé
+        if(objWeapon.getEquipped() === false){
+            //Ajoute le prix de l'arme a la bourse du joueur
+            let priceWeapon = Math.ceil(objWeapon.getPrice() / 2); //Math.ceil arrondis vers le hault pour qu'il n'y ai pas de reste apres la division
+            this._gold += priceWeapon;
+    
+            //suprime l'arme de l'inventaire
+            this.deleteWeaponInventory(objWeapon);
+        }
+    }
 
-        //suprime l'arme de l'inventaire
-        this.deleteWeaponInventory(objWeapon);
-        //this._inventory 
-   
+    pickUpGold(objMonster){
+        let gold = this._gold += objMonster.getGold();
+        this._gold = gold; 
     }
 //#endregion
 
